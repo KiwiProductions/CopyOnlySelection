@@ -101,7 +101,7 @@ namespace CopyOnlySelection
             if (textView == null)
             {
                 Debug.WriteLine("Could not find IWpfTextView");
-                dte.ExecuteCommand("Edit.Cut");
+                Helpers.ExecuteCommand("Edit.Cut");
                 return;
             }
 
@@ -109,7 +109,7 @@ namespace CopyOnlySelection
             if (snapshot != snapshot.TextBuffer.CurrentSnapshot) return;
 
             if (dte.ActiveWindow.Type == EnvDTE.vsWindowType.vsWindowTypeDocument && textView.Selection.IsEmpty) return;
-            dte.ExecuteCommand("Edit.Cut");
+            Helpers.ExecuteCommand("Edit.Cut");
         }
     }
 }

@@ -100,15 +100,16 @@ namespace CopyOnlySelection
             // Only block copy / cut if the active window is a document window, and the selection is empty.
             if (textView == null)
             {
+                Debug.WriteLine(dte.ActiveWindow.Type);
                 Debug.WriteLine("Could not find IWpfTextView");
-                dte.ExecuteCommand("Edit.Copy");
+                Helpers.ExecuteCommand("Edit.Copy");
                 return;
             }
 
             ITextSnapshot snapshot = textView.TextSnapshot;
             if (snapshot != snapshot.TextBuffer.CurrentSnapshot) return;
             if (dte.ActiveWindow.Type == EnvDTE.vsWindowType.vsWindowTypeDocument && textView.Selection.IsEmpty) return;
-            dte.ExecuteCommand("Edit.Copy");
+            Helpers.ExecuteCommand("Edit.Copy");
         }
     }
 }
